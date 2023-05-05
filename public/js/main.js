@@ -13,7 +13,45 @@ function onSubmit(e) {
   }
 
   // generateImageRequest(prompt, size);
-  generateTextRequest(prompt);
+  // generateTextRequest(prompt);
+  generateSpeechRequest(prompt);
+}
+
+async function generateSpeechRequest(prompt) {
+  try {
+    showSpinner();
+
+    const response = await fetch('/openai/generatespeech', {
+      
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        text: prompt,
+        "voice_settings": {
+          "stability": 0.2,
+          "similarity_boost": 0.68
+        }
+      }),
+    });
+
+    if (!response.ok) {
+      removeSpinner();
+      console.log(response);
+      throw new Error('That audio could not be generated');
+    }
+
+    const audio = await response.arrayBuffer();
+    const audioSource = document.getElementById('audio-source');
+    audioSource.src = URL.createObjectURL(new Blob([audio], { type: 'audio/mpeg' }));
+    const audioPlayer = document.getElementById('audio-player');
+    audioPlayer.load();
+
+    removeSpinner();
+  } catch (error) {
+    document.querySelector('.msg').textContent = error;
+  }
 }
 
 async function generateTextRequest(prompt) {
