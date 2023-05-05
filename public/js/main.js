@@ -16,6 +16,11 @@ function onSubmit(e) {
 }
 
 async function generateImageRequest(prompt, size) {
+
+  console.log(JSON.stringify({
+    prompt,
+    size,
+  }));
   try {
     showSpinner();
 
