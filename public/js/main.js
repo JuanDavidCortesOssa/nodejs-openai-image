@@ -2,17 +2,54 @@ function onSubmit(e) {
   e.preventDefault();
 
   document.querySelector('.msg').textContent = '';
-  document.querySelector('#image').src = '';
+  // document.querySelector('#image').src = '';
 
   const prompt = document.querySelector('#prompt').value;
-  const size = document.querySelector('#size').value;
+  // const size = document.querySelector('#size').value;
 
   if (prompt === '') {
     alert('Please add some text');
     return;
   }
 
-  generateImageRequest(prompt, size);
+  // generateImageRequest(prompt, size);
+  generateTextRequest(prompt);
+}
+
+async function generateTextRequest(prompt) {
+  try {
+    showSpinner();
+
+    console.log(prompt);
+    const response = await fetch('/openai/generatetext', {
+      
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({prompt}),
+    });
+
+    
+
+    if (!response.ok) {
+      removeSpinner();
+      console.log(response);
+      throw new Error('That text could not be generated');
+    }
+
+    const data = await response.json();
+    console.log(data);
+
+    const gptText = data.data;
+
+    document.querySelector('.msg').textContent = gptText;
+
+    removeSpinner();
+  } catch (error) {
+    console.log(prompt);
+    document.querySelector('.msg').textContent = error;
+  }
 }
 
 async function generateImageRequest(prompt, size) {

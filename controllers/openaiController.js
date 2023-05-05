@@ -39,4 +39,40 @@ const generateImage = async (req, res) => {
   }
 };
 
-module.exports = { generateImage };
+const generateText= async (req, res) => {
+  const { prompt } = req.body;
+  console.log(req.body);
+  try {
+    const response = await openai.createCompletion({
+      model: "text-davinci-003",
+      prompt: prompt,
+      temperature: 0,
+      max_tokens: 150,
+      top_p: 1.0,
+      frequency_penalty: 0.5,
+      presence_penalty: 0.0,
+      stop: ["You:"],
+    });
+
+    const textResponse = response.data.choices[0].text;
+
+    res.status(200).json({
+      success: true,
+      data: textResponse,
+    });
+  } catch (error) {
+    if (error.response) {
+      console.log(error.response.status);
+      console.log(error.response.data);
+    } else {
+      console.log(error.message);
+    }
+
+    res.status(400).json({
+      success: false,
+      error: 'The text could not be generated',
+    });
+  }
+}
+
+module.exports = { generateImage, generateText };
