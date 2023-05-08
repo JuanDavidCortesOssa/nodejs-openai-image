@@ -14,7 +14,15 @@ function onSubmit(e) {
 
   // generateImageRequest(prompt, size);
   // generateTextRequest(prompt);
-  generateSpeechRequest(prompt);
+  //generateSpeechRequest(prompt);
+  answerSpechRequest(prompt);
+}
+
+async function answerSpechRequest(prompt){
+
+  const gptAnswer = await generateTextRequest(prompt);
+  generateSpeechRequest(gptAnswer);
+
 }
 
 async function generateSpeechRequest(prompt) {
@@ -29,10 +37,10 @@ async function generateSpeechRequest(prompt) {
       },
       body: JSON.stringify({
         text: prompt,
-        "voice_settings": {
-          "stability": 0.2,
-          "similarity_boost": 0.68
-        }
+        // "voice_settings": {
+        //   "stability": 0.2,
+        //   "similarity_boost": 0.68
+        // }
       }),
     });
 
@@ -84,9 +92,12 @@ async function generateTextRequest(prompt) {
     document.querySelector('.msg').textContent = gptText;
 
     removeSpinner();
+
+    return gptText;
+
   } catch (error) {
-    console.log(prompt);
-    document.querySelector('.msg').textContent = error;
+    console.log(error);
+    //document.querySelector('.msg').textContent = error;
   }
 }
 

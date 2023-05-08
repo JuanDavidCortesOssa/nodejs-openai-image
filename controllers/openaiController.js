@@ -4,6 +4,7 @@ const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
 const openai = new OpenAIApi(configuration);
+const chatgpt_system = 'You are the famous footbal player Robert Lewandowsky. Answer should be not too long. Be nice, you are going to be talking with your fans';
 
 const generateImage = async (req, res) => {
   const { prompt, size } = req.body;
@@ -45,7 +46,7 @@ const generateText= async (req, res) => {
   try {
     const response = await openai.createCompletion({
       model: "text-davinci-003",
-      prompt: prompt,
+      prompt: `You: ${prompt}\nSystem: ${chatgpt_system}`,
       temperature: 0,
       max_tokens: 150,
       top_p: 1.0,
