@@ -1,3 +1,5 @@
+
+
 function onSubmit(e) {
   e.preventDefault();
 
@@ -55,6 +57,39 @@ async function generateSpeechRequest(prompt) {
     audioSource.src = URL.createObjectURL(new Blob([audio], { type: 'audio/mpeg' }));
     const audioPlayer = document.getElementById('audio-player');
     audioPlayer.load();
+
+    const formData = new FormData();
+    formData.append('audio', URL.createObjectURL(new Blob([audio], { type: 'audio/mpeg' })));
+
+
+
+    var result =  await fetch(`/openai/saveAudio`, {
+      method: 'POST',
+      body : formData
+    }).then((response) => response.json()).then(async (data) =>{
+
+      //var audioUrl = data;
+  
+      //console.log(audioUrl);
+      /*if (peerConnection?.signalingState === 'stable' || peerConnection?.iceConnectionState === 'connected') {
+        const talkResponse = await fetch(`${DID_API.url}/talks/streams/${streamId}`,
+          {
+            method: 'POST',
+            headers: { Authorization: `Basic ${DID_API.key}`, 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              'script': {
+                'type': 'audio',
+                'audio_url': audioUrl,
+              },
+              'driver_url': 'bank://lively/',
+              'config': {
+                'stitch': true,
+              },
+              'session_id': sessionId
+            })
+          });
+      }*/
+    });
 
     removeSpinner();
   } catch (error) {
