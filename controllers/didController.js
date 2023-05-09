@@ -1,39 +1,17 @@
 const axios = require('axios');
+const multer = require('multer');
+
+const upload = multer();
 
 const saveAudio = async (req, res)=>{
-    const { audio } = req.body;
 
-    console.log(req);
-    const headers = {
-        'Authorization': `Basic ${process.env.DID_Key}`,
-        'Content-Type': req['content-type']
-      };
-      try {
-        const response = await axios.post(
-            "https://api.d-id.com/audios",
-          audio,
-          { headers: headers}
-        );
+  if (!req.file) {
+    // No audio file was uploaded
+    return res.status(400).json({ error: 'No audio file provided' });
+  }
+    const { audio } = req.file.audio;
 
-        console.log(res, req);
-        res.send(response);
-
+    console.log("audio", req,req.file);
     
-        /*const audioResponse = response.data;
-    
-        res.set('Content-Type', 'application/json');
-        res.send(audioResponse);*/
-        
-      } catch (error) {
-        if (error.response) {
-          console.log(error.response.status);
-        } else {
-          console.log(error.message);
-        }
-        res.status(400).json({
-            success: false,
-            error: 'Error in the request',
-          });
-    }
 }
 module.exports = { saveAudio };
