@@ -4,6 +4,8 @@ const RTCPeerConnection = (window.RTCPeerConnection || window.webkitRTCPeerConne
 const KEY = "a2V2aW5AZ29sLWJhbGwuY29t:7pHGpm1AybkvBcn9pKUip";
 const URLG = "https://api.d-id.com"
 
+let BannedWords = ["estrategia"];
+
 
 let peerConnection;
 let streamId;
@@ -169,6 +171,18 @@ function onSubmit(e) {
     alert('Please add some text');
     return;
   }
+
+  for( let i = 0; i < BannedWords.length; i++)
+  {
+    if(prompt.includes(" "+ BannedWords[i]+" ") || prompt.includes(BannedWords[i]+" ") || prompt.includes(" "+BannedWords[i]) ){
+      alert(`La palabra "${ BannedWords[i] }" no esta permitida `);
+      return;
+    }    
+  }
+
+
+  
+
 
   // generateImageRequest(prompt, size);
   // generateTextRequest(prompt);
