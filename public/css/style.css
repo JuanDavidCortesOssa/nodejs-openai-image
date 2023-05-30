@@ -15,7 +15,7 @@
 
 #video-wrapper{
   background: lightgray;
-  height:500px;
+  height:250px;
   background-position: top;
 }
 
@@ -58,10 +58,11 @@ body {
 
 /* Showcase */
 .showcase {
-  height: 450px;
+  height: 500px;
   width: 100%;
   background: var(--primary-color);
 }
+
 
 .showcase h1 {
   font-size: 2.5rem;
@@ -98,7 +99,6 @@ form button {
   background: #333;
   color: #fff;
   cursor: pointer;
-  margin-top: 20px;
 }
 
 form button:hover {
@@ -110,6 +110,7 @@ form button:hover {
 .image {
   width: 100%;
   margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 img {
@@ -120,5 +121,5 @@ img {
 .msg {
   font-size: 1.6rem;
   text-align: center;
-  margin-top: 1rem;
+  margin-top: 4rem;
 }

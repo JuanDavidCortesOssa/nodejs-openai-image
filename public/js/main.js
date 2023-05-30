@@ -9,6 +9,13 @@ let peerConnection;
 let streamId;
 let sessionId;
 let sessionClientAnswer;
+let idAnimation;
+
+let lewandowskiImage = "s3://d-id-images-prod/google-oauth2|114193409010492803366/img_d5TmRDAKr7Z2Casd3e7JU/pupulox_a_photo_of_robert_lewandowsky_as_a_soccer_player_d563c6ef-8f5e-4a68-95d4-209a045fb4c2_720.png";
+let cartoonlewa = "s3://d-id-images-prod/google-oauth2|114193409010492803366/img_2w8swQXD98x3FLdzKf5pe/grid_0_720.png";
+let normalTEst = "s3://d-id-images-prod/google-oauth2|114193409010492803366/img_qIoT4_XQw0_J-OaOaqism/Diomedes-Diaz-Maestre-El-Cacique-de-La-Junta-scaled.jpg";
+
+let currentPlayer = "s3://d-id-images-prod/google-oauth2|106512935259841632356/img_5hxRWSYfMo8tzp3MV5pWd/descarga__2_.png";
 const talkVideo = document.getElementById('talk-video');
 talkVideo.setAttribute('playsinline', '');
 
@@ -22,7 +29,7 @@ function setVideoElement(stream) {
   }
 }
 
-startConnection().then(()=>{console.log("loaded")});
+startConnection().then(()=>{console.log("loaded")}).catch((err) =>{console.log(err);});
 async function startConnection() {
   showSpinner();
   if (peerConnection && peerConnection.connectionState === 'connected') {
@@ -36,7 +43,7 @@ async function startConnection() {
     method: 'POST',
     headers: {'Authorization': `Basic ${KEY}`, 'Content-Type': 'application/json'},
     body: JSON.stringify({
-      source_url: "s3://d-id-images-prod/google-oauth2|106512935259841632356/img_5hxRWSYfMo8tzp3MV5pWd/descarga__2_.png"
+      source_url: cartoonlewa 
     }),
   });
 
