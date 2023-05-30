@@ -6,6 +6,8 @@ const URLG = "https://api.d-id.com"
 
 let BannedWords = ["estrategia"];
 
+let maxCharacters = 50;
+
 
 let peerConnection;
 let streamId;
@@ -169,6 +171,12 @@ function onSubmit(e) {
 
   if (prompt === '') {
     alert('Please add some text');
+    return;
+  }
+
+  if(prompt.length > maxCharacters)
+  {
+    alert(`la cantidad maxima de carateres es ${ maxCharacters}`);
     return;
   }
 
