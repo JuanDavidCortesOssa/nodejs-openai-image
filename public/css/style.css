@@ -122,19 +122,19 @@ body {
   flex-direction: row;
 }
 
-#InputText
+#prompt
 {
-  background-color: brown;
   height: 100%;
   width: 90%;
 }
 
 #InputButton
 {
-  background-color: red;
   height: 100%;
   width: 10%;
 }
+
+
 
 
 /* OldCSS */
