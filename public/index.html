@@ -11,36 +11,69 @@
     <title>OpenAI Image Genrator</title>
   </head>
   <body>
-    <header>
-      <div class="navbar">
-        <div class="logo">
-          <h2>OpenAI Audio Generate</h2>
+    <div id="Container">
+      <div id="LeftScreen">
+        <div id="PlayerInfo">
+  
+
         </div>
-        <div class="nav-links">
-          <ul>
-            <li>
-              <a href="https://beta.openai.com/docs" target="_blank"
-                >OpenAI API Docs</a
-              >
-            </li>
-          </ul>
+        <div id="ChatMenu"> 
+          <div id="MenuButtons"> 
+          
+
+          </div>
+          <div id="GoBackButton"> 
+          
+
+          </div>
+
         </div>
       </div>
-    </header>
+  
+      <div id="RightScreen">
+        <div id="PlayerVideo">
+          <div id="PlayerVideoComponents">
+              <video id="talk-video" width=250 height=250 autoplay></video>
+              <!-- <div id="PlayerName">
+                <h1>Lewandowski</h1>
+              </div> -->
+          </div>
+        </div>
+        <div id="Chat">
+          <div id="Messages">
+          
+        
+          </div>
+          <div id="UserInput">
+          
+            <div id="InputText">
+          
+        
+            </div>
+            <div id="InputButton">
+          
+        
+            </div>
+        
+          </div>
+        </div>
+      </div>
+  </div>
+
 
     <main>
       <section class="showcase">      
         <form  id="image-form">
           <div id="video-wrapper">
             <div>
-              <video id="talk-video" width=250 height=250 autoplay></video>
+
             </div>
           </div>
-          <h1>Lewandowski</h1>
           <div class="form-control">
             <input type="text" id="prompt" placeholder="Ingrese un mensaje" />
           </div>
-          <!-- size -->
+          
+          
           <button type="submit" class="btn">Enviar</button>
         </form>
       </section>

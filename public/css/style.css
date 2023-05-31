@@ -1,4 +1,144 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+body {
+  margin: 0ch;
+  padding: 0ch;
+  background: lightgray;
+}
+
+#Container
+{
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 100vh;
+  background: lightblue;
+}
+
+#LeftScreen
+{
+  background-color: lightgray;
+  height: 100%;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+}
+
+#PlayerInfo
+{
+  background-color: lightsalmon;
+  height: 50%;
+  width: 100%;
+}
+
+#ChatMenu
+{
+  background-color: lightgreen;
+  height: 50%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#MenuButtons
+{
+  background-color: lightyellow;
+  height: 30%;
+  width: 100%;
+}
+
+#GoBackButton
+{
+  background-color: plum;
+  height: 30%;
+  width: 100%;
+}
+
+#RightScreen
+{
+  background-color: cadetblue;
+  height: 100%;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+}
+
+#PlayerVideo
+{
+  background-color: darkslateblue;
+  height: 40%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  /* align-items: center; */
+}
+
+#PlayerVideoComponents
+{
+  background-color: goldenrod;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 50%;
+  align-items: center;
+}
+
+#talk-video
+{
+  background-color: white;
+  height: 100%;
+  width: 100%;
+}
+
+#Chat
+{
+  background-color: purple;
+  height: 60%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.msg {
+  font-size: 1.6rem;
+  text-align: center;
+  margin-top: 4rem;
+}  
+
+#Messages
+{
+  background-color: lightpink;
+  height: 80%;
+  width: 100%;
+}
+
+
+#UserInput
+{
+  background-color: violet;
+  height: 20%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+#InputText
+{
+  background-color: brown;
+  height: 100%;
+  width: 90%;
+}
+
+#InputButton
+{
+  background-color: red;
+  height: 100%;
+  width: 10%;
+}
+
+
+/* OldCSS */
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
 
 *,
 *:before,
@@ -28,7 +168,7 @@ body {
 }
 
 /* Navbar */
-.navbar {
+/* .navbar {
   background: #333;
   color: #fff;
   padding: 1rem;
@@ -54,10 +194,10 @@ body {
 
 .navbar a:hover {
   color: var(--primary-color);
-}
+} */
 
 /* Showcase */
-.showcase {
+/* .showcase {
   height: 500px;
   width: 100%;
   background: var(--primary-color);
@@ -103,11 +243,11 @@ form button {
 
 form button:hover {
   transform: scale(1.1);
-}
+} */
 
 /* Image */
 
-.image {
+/* .image {
   width: 100%;
   margin-top: 2rem;
   margin-bottom: 2rem;
@@ -116,10 +256,6 @@ form button:hover {
 img {
   display: block;
   margin: auto;
-}
+}*/
 
-.msg {
-  font-size: 1.6rem;
-  text-align: center;
-  margin-top: 4rem;
-}
+
